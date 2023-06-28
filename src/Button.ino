@@ -15,19 +15,19 @@ void setup() {
 }
 
 // loop() runs over and over again, as quickly as it can execute.
-bool cont = false;
-bool onOff = false;
+bool once = false;
+bool state = false;
 void loop() {
   // The core of your code will likely live here.
-  if(digitalRead(D0)==HIGH&&!cont) {
-    Serial.println("Button Down");
-    onOff = !onOff;
-    cont=true;
+  if(digitalRead(D0)==HIGH&&!once) {
+    Serial.println("Button Clicked");
+    state = !state;
+    once=true;
   }
   if(digitalRead(D0)==LOW) {
-    cont = false;
+    once = false;
   }
-  if(onOff) {
+  if(state) {
     digitalWrite(D1, HIGH);
   } else {
     digitalWrite(D1, LOW);
